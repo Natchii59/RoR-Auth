@@ -1,0 +1,10 @@
+<h1>Bienvenue sur mon site</h1>
+
+<p>
+  <% if user_signed_in? %>
+    <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Se connecter", new_user_session_path %>
+    <%= button_to "Se connecter via Github", user_github_omniauth_authorize_path %>
+  <% end %>
+</p>
