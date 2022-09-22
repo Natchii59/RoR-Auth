@@ -28,6 +28,7 @@ gem "jbuilder"
 # gem "bcrypt", "~> 3.1.7"
 
 gem 'devise'
+gem 'cancancan'
 gem 'omniauth'
 gem 'omniauth-github'
 gem "omniauth-rails_csrf_protection"

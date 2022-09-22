@@ -2,6 +2,8 @@ class User < ApplicationRecord
 
   attr_accessor :login
 
+  has_many :posts
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -23,7 +25,6 @@ class User < ApplicationRecord
   end
 
   def self.from_github(auth)
-    puts auth
     where(github_id: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.username = auth.info.nickname
@@ -31,5 +32,9 @@ class User < ApplicationRecord
 
       user.skip_confirmation!
     end
+  end
+
+  def admin?
+    self.id === 1
   end
 end
